@@ -42,13 +42,33 @@ void searchMax(int *counter) {
 
 }
 
+void chekForLetters(std::string &word) {
+	for (int i = 0; i < 4; i++) {
+		for (int j = i+1; j < 3; j++) {
+			char str = changed_litters[i] + changed_litters[j];
+			if (word.find(str) != std::string::npos) {
+				word[word.find(str)] = toupper(word[word.find(str)]);
+				word[word.find(str) + 1] = toupper(word[word.find(str)+1]);
+				std::cout << word << std::endl;
+				std::cout << word.find(str);
+
+			}
+				
+		}
+
+	}
+
+
+}
+
 
 void writeNewText() {
 	std::ifstream file(FILE_PATH_IN);
-	std::string word; 
+	std::string word;
 	while (!file.eof()) {
-		file >> word; 
-		if ()
+		file >> word;
+		chekForLetters(word);
+		std::cout << word << std::endl;
 		
 
 	}
@@ -88,12 +108,14 @@ int main() {
 		}
 	}
 
-		file.close();
-		searchMax(counterString);
-		std::cout << changed_litters << std::endl;
-		outArrayS(counterString);
+	file.close();
+	searchMax(counterString);
+	//std::cout << changed_litters << std::endl;
+	//outArrayS(counterString);
+	writeNewText();
 
-		
+
+
 	system("pause");
 	return 0;
 }
